@@ -1,5 +1,10 @@
 
-.body {
+body.light {
   background-color: #f0f0f0;
   color: #030303;
+}
+
+body.dark {
+  background-color: #333333;
+  color: #f0f0f0;
 }
