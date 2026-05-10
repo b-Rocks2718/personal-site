@@ -1,3 +1,10 @@
 .mcp.json
 plan.md
 getting_started.md
+
+# wrangler files
+.wrangler
+.dev.vars*
+!.dev.vars.example
+.env*
+!.env.example
