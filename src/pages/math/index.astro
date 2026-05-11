@@ -17,9 +17,31 @@ const posts = (await getCollection('math')).sort(
 		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
 		<style>
 			main {
-				width: 960px;
-        margin-left: 1rem;
+				width: calc(100vw - var(--sidebar-width));
+        max-width: none;
+        margin: 0;
+        padding: 0 0 3em;
 			}
+      .section-banner {
+        width: 100%;
+        min-height: 220px;
+        margin-bottom: 2rem;
+        padding: 1rem;
+        display: flex;
+        align-items: end;
+        border-radius: 0;
+        background-size: cover;
+        background-position: center 62%;
+        box-sizing: border-box;
+      }
+      .math-banner {
+        background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.35)),
+          url('/images/math-banner.jpeg');
+      }
+      .post-list {
+        padding: 0 2rem;
+        box-sizing: border-box;
+      }
 			ul {
 				display: flex;
 				flex-wrap: wrap;
@@ -86,7 +108,9 @@ const posts = (await getCollection('math')).sort(
 	<body>
 		<Sidebar />
 		<main>
-			<section>
+      <section class="section-banner math-banner">
+      </section>
+			<section class="post-list">
 				<ul>
 					{
 						posts.map((post) => (
