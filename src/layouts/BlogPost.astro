@@ -2,11 +2,11 @@
 import { Image } from 'astro:assets';
 import type { CollectionEntry } from 'astro:content';
 import BaseHead from '../components/BaseHead.astro';
-import Footer from '../components/Footer.astro';
 import FormattedDate from '../components/FormattedDate.astro';
-import Header from '../components/Header.astro';
+import Sidebar from '../components/Sidebar.astro';
 
-type Props = CollectionEntry<'blog'>['data'];
+// fine because the frontmatter schema is the same for all collections
+type Props = CollectionEntry<'math'>['data'];
 
 const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 ---
@@ -39,8 +39,9 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 			.title {
 				margin-bottom: 1em;
 				padding: 1em 0;
-				text-align: center;
+				text-align: left;
 				line-height: 1;
+        font-size: small;
 			}
 			.title h1 {
 				margin: 0 0 0.5em 0;
@@ -56,7 +57,7 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 	</head>
 
 	<body>
-		<Header />
+		<Sidebar />
 		<main>
 			<article>
 				<div class="hero-image">
@@ -81,6 +82,5 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 				</div>
 			</article>
 		</main>
-		<Footer />
 	</body>
 </html>
