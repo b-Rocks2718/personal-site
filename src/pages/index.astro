@@ -1,19 +1,124 @@
 ---
+import { getCollection } from 'astro:content';
 import BaseHead from '../components/BaseHead.astro';
+import FormattedDate from '../components/FormattedDate.astro';
 import Sidebar from '../components/Sidebar.astro';
 import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
+
+const mathPosts = await getCollection('math');
+const csPosts = await getCollection('cs');
+const chemPosts = await getCollection('chem');
+
+const recentPosts = [
+	...mathPosts.map((post) => ({ ...post, section: 'math' as const})),
+	...csPosts.map((post) => ({ ...post, section: 'cs' as const})),
+	...chemPosts.map((post) => ({ ...post, section: 'chem' as const})),
+]
+	.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+	.slice(0, 5);
+
+const sectionLabels = {
+  math: 'Math',
+  cs: 'CS',
+  chem: 'Chem',
+}
 ---
 
 <!doctype html>
 <html lang="en">
 	<head>
 		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+		<style>
+			main {
+				width: 820px;
+				max-width: calc(100% - 2rem);
+				margin: 0 auto 0 8rem;
+				padding: 3rem 1rem;
+			}
+
+			.intro {
+				margin-bottom: 2.5rem;
+			}
+
+      .about {
+        margin-left: 1.5rem;
+      }
+
+			.intro h1 {
+        color: var(--accent-dark);
+				margin-bottom: 0.5rem;
+			}
+
+      .recent-heading {
+        color: var(--accent-dark);
+      }
+
+			.recent-posts {
+				list-style: none;
+				margin: 1rem 0 0 1.5rem;
+				padding: 0;
+        font-size: medium;
+			}
+
+			.recent-posts li {
+				margin-bottom: 1.25rem;
+			}
+
+			.recent-posts a {
+				text-decoration: none;
+			}
+
+      .post-title {
+        margin: 0;
+        color: rgb(var(--gray-dark));
+      }
+
+      .post-description {
+        margin: 0.1rem 0 0;
+        color: rgb(var(--gray));
+      }
+
+			.post-meta {
+				margin: 0.1rem 0 0;
+				color: rgb(var(--gray));
+				font-size: 0.9rem;
+			}
+
+      .recent-posts a:hover .post-title,
+      .recent-posts a:hover .post-meta {
+        color: var(--accent);
+      }
+		</style>
 	</head>
 	<body>
 		<Sidebar />
 		<main>
-			<h1>My Website!</h1>
-		
+			<section class="intro">
+				<h1>Brooks Bryant</h1>
+				<p class="about">
+					CS and mathematics major at UT Austin. Interested in programming
+					languages, operating systems, computer architecture, pure mathematics, and chemistry.
+				</p>
+			</section>
+
+			<section>
+				<h3 class="recent-heading">Recent Writing</h3>
+				<ul class="recent-posts">
+					{
+						recentPosts.map((post) => (
+							<li>
+								<a href={`/${post.section}/${post.id}/`}>
+									<h3 class="post-title">{post.data.title}</h3>
+                  <p class="post-description">{post.data.description}</p>
+									<p class="post-meta">
+										{sectionLabels[post.section]} · <FormattedDate date={post.data.pubDate} />
+									</p>
+								</a>
+							</li>
+						))
+					}
+				</ul>
+			</section>
 		</main>
 	</body>
 </html>

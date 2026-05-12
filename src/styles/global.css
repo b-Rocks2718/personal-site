@@ -5,8 +5,8 @@
  */
 
 :root {
-	--accent: #318377;
-	--accent-dark: #1f5642;
+	--accent:  #268874;
+	--accent-dark: #215e48;
 	--black: 24, 22, 20;
 	--gray: 105, 98, 90;
 	--gray-light: 238, 233, 225;
@@ -15,7 +15,7 @@
 }
 
 body {
-	font-family: var(--font-atkinson);
+	font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 	margin: 0;
 	padding: 0;
 	text-align: left;
@@ -44,19 +44,22 @@ h6 {
 	line-height: 1.2;
 }
 h1 {
-	font-size: 3.052em;
+	font-size: 2em;
 }
 h2 {
-	font-size: 2.441em;
+	font-size: 1.8em;
 }
 h3 {
-	font-size: 1.953em;
+	font-size: 1.6em;
 }
 h4 {
-	font-size: 1.563em;
+	font-size: 1.4em;
 }
 h5 {
-	font-size: 1.25em;
+	font-size: 1.2em;
+}
+h6 {
+  font-size: 1em;
 }
 strong,
 b {

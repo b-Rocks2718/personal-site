@@ -57,10 +57,6 @@ const posts = (await getCollection('math')).sort(
 				text-decoration: none;
 				transition: 0.2s ease;
 			}
-			ul li img {
-				margin-bottom: 0.5rem;
-				border-radius: 12px;
-			}
 			ul li a {
 				display: block;
 			}
@@ -68,25 +64,22 @@ const posts = (await getCollection('math')).sort(
 				margin: 0;
 				color: rgb(var(--black));
 				line-height: 1;
-        font-size: 1.2rem;
+        font-size: 1.5rem;
 			}
       .description {
 	      margin: 0.35rem 0 0.25rem;
 	      color: rgb(var(--gray));
       	line-height: 1.4;
-        font-size: 0.95rem;
+        font-size: 1.1rem;
       }
 			.date {
 				margin: 0;
 				color: rgb(var(--gray));
-        font-size: 0.9rem
+        font-size: 1rem;
 			}
 			ul li a:hover h4,
 			ul li a:hover .date {
-				color: rgb(var(--accent));
-			}
-			ul a:hover img {
-				box-shadow: var(--box-shadow);
+				color: var(--accent);
 			}
 			@media (max-width: 720px) {
 				ul {
@@ -95,12 +88,6 @@ const posts = (await getCollection('math')).sort(
 				ul li {
 					width: 100%;
 					text-align: center;
-				}
-				ul li:first-child {
-					margin-bottom: 0;
-				}
-				ul li:first-child .title {
-					font-size: 1.563em;
 				}
 			}
 		</style>
