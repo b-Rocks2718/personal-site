@@ -82,8 +82,20 @@ const posts = (await getCollection('chem')).sort(
 				color: var(--accent);
 			}
 			@media (max-width: 720px) {
+        main {
+          width: 100%;
+          max-width: none;
+          padding: 0 0 2rem;
+        }
+        .section-banner {
+          min-height: 140px;
+          margin-bottom: 1.25rem;
+        }
+        .prose-list {
+          padding: 0 1rem;
+        }
 				ul {
-					gap: 0.5em;
+					gap: 1.25rem;
 				}
 				ul li {
 					width: 100%;
