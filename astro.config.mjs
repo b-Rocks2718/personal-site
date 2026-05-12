@@ -15,6 +15,12 @@ export default defineConfig({
       enabled: false,
     },
 
+    markdown: {
+		  shikiConfig: {
+			  theme: 'github-light',
+		  },
+	  },
+
     site: 'https://example.com',
     integrations: [
   	mdx({

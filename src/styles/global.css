@@ -75,7 +75,11 @@ p {
 	margin-bottom: 1em;
 }
 .prose p {
-	margin-bottom: 2em;
+	margin: 0 0 1em;
+}
+.prose pre {
+	margin: 1rem 0;
+	padding: 0rem 1rem;
 }
 textarea {
 	width: 100%;
@@ -98,8 +102,13 @@ code {
 	border-radius: 2px;
 }
 pre {
-	padding: 1.5em;
+	padding: 1rem;
+  margin: 0.75rem 0;
 	border-radius: 8px;
+	font-size: 1rem;
+	line-height: 1.5;
+	background: #f6f8fa;
+	overflow-x: auto;
 }
 pre > code {
 	all: unset;

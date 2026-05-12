@@ -2,9 +2,68 @@
 title: 'Fair Spinlocks'
 description: >
   An explanation of CLH locks, the flavor of fair spinlocks I implemented for my operating system.
-pubDate: 'Jun 01 2024'
+pubDate: 'May 11 2026'
 ---
 
-linked list wait queue and stuff
+import SpinlockGoodAnimation from '../../components/clh_article/spinlockGoodAnimation';
+import SpinlockBadAnimation from '../../components/clh_article/spinlockBadAnimation';
 
+CLH locks are the flavor of fair spinlocks I implemented for my operating system. 
+Before explaining them, let's look at a simple spinlock implementation and see why it's unfair.
 
+## Naive Spinlock
+
+The simplest way to implement a spinlock is to have a single boolean variable 
+that indicates whether the lock is taken or not.
+When a thread wants to acquire the lock, it atomically swaps true into 
+the variable and checks the old value. 
+If the old value was false, the thread has successfully acquired the lock. 
+If the old value was true, the thread continues to spin until the 
+lock becomes available.
+
+```c
+// `taken` is the variable we use as the spinlock
+bool taken = false;
+
+void acquire() {
+  while (atomic_swap(&taken, true)) {
+    // spin
+  }
+}
+```
+
+The atomic swap prevents the case where two threads observe the lock as 
+free at the same time, and both think they have acquired the lock. 
+
+To release, we simply set the variable back to false.
+
+```c
+void release() {
+  atomic_store(&taken, false);
+}
+```
+
+The issue with this implementation is that there is no guarantee about the order 
+that different threads will acquire the lock.
+If multiple threads are spinning on the lock, 
+we might hope that all get a chance to acquire the lock:
+
+<SpinlockGoodAnimation client:load/>
+
+But there is no guarantee that this will happen. 
+The interleaving of threads is non-deterministic, 
+and it's possible that one thread will acquire the lock multiple times in a row:
+
+<SpinlockBadAnimation client:load/>
+
+In general, we cannot make any guarantee on how long it will take for a 
+thread to acquire this kind of spinlock, and it could even starve indefinitely 
+(although this is rare in practice). The solution is a new kind of spinlock.
+ 
+## CLH Locks
+
+CLH locks are named after their inventors, Craig, Landin, and Hagersten.
+The key idea is to have a linked list wait queue, 
+where each thread spins on a local variable rather than a shared one. 
+This ensures that threads acquire the lock in the order they requested it, 
+providing fairness and preventing starvation.
