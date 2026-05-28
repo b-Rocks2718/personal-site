@@ -2,11 +2,13 @@
 title: 'Fair Spinlocks'
 description: >
   An explanation of CLH locks, the flavor of fair spinlocks I implemented for my operating system.
-pubDate: 'May 11 2026'
+pubDate: 'May 28 2026'
 ---
 
 import SpinlockGoodAnimation from '../../components/clh_article/spinlockGoodAnimation';
 import SpinlockBadAnimation from '../../components/clh_article/spinlockBadAnimation';
+import ClhQueueAnimation from '../../components/clh_article/clhQueueAnimation';
+import ClhRecyclingAnimation from '../../components/clh_article/clhRecyclingAnimation';
 
 CLH locks are the flavor of fair spinlocks I implemented for my operating system. 
 Before explaining them, let's look at a simple spinlock implementation and see why it's unfair.
@@ -57,13 +59,99 @@ and it's possible that one thread will acquire the lock multiple times in a row:
 <SpinlockBadAnimation client:load/>
 
 In general, we cannot make any guarantee on how long it will take for a 
-thread to acquire this kind of spinlock, and it could even starve indefinitely 
-(although this is rare in practice). The solution is a new kind of spinlock.
+thread to acquire this kind of spinlock, and it could even starve indefinitely. 
+The solution is a new kind of spinlock.
  
 ## CLH Locks
 
 CLH locks are named after their inventors, Craig, Landin, and Hagersten.
-The key idea is to have a linked list wait queue, 
-where each thread spins on a local variable rather than a shared one. 
-This ensures that threads acquire the lock in the order they requested it, 
-providing fairness and preventing starvation.
+The idea is to have an implicit linked list wait queue, 
+where each thread spins until the thread in front of it releases the lock.
+
+To accomplish this, each thread owns a single CLHNode, which acts like the
+thread's ticket to acquire a CLH lock. 
+
+```c
+typedef struct CLHNode {
+  bool locked;
+} CLHNode;
+```
+
+The lock itself is just a pointer to the tail of the queue
+
+```c
+typedef struct CLHLock {
+  CLHNode* tail;
+} CLHLock;
+```
+
+When a thread wants to acquire a lock, it will mark its own node as locked, 
+and then add the node to the end of the queue with an atomic swap. 
+The swap returns the old tail, and the thread spins until the old tail's node
+is marked as unlocked.
+
+```c
+thread_local CLHNode* my_node; // assume we allocated a node at initialization
+
+void clh_acquire(CLHLock* lock) {
+  my_node->locked = true;
+  CLHNode* prev = atomic_swap(&lock->tail, my_node);
+  while (atomic_load(&prev->locked)) {
+    // spin
+  }
+}
+```
+
+To release the lock, the thread simply marks its node as unlocked.
+
+```c
+void clh_release(CLHLock* lock) {
+  my_node->locked = false;
+}
+```
+
+Whatever thread is next in the queue will observe this and acquire the lock.
+
+<ClhQueueAnimation client:load/>
+
+#### Node Recycling
+An issue with the above implementation is that we cannot reuse `my_node` 
+after we release the lock. If we did reuse it, we'd have to set 
+`my_node->locked = true` before we add it to the queue, and there is a chance
+that a waiting thread misses the window where `my_node->locked` is false.
+We could solve this by allocating a new node for each acquire, but 
+there is a better solution. Although we cannot reuse `my_node` immediately after releasing the lock,
+we can reuse the node from the thread in front of us in the queue. 
+This is because we are the only thread that spins on that node, so we know that
+when the thread in front of us releases the lock, we are the only thread that will access that node.
+To do this, we store the node in front of us when we acquire the lock. When we release the lock,
+we switch `my_node` to that node, and we can reuse it for the next acquire.
+
+```c
+thread_local CLHNode* my_node; // assume we allocated a node at initialization
+thread_local CLHNode* my_pred = NULL;
+
+void clh_acquire(CLHLock* lock) {
+  my_node->locked = true;
+  my_pred = atomic_swap(&lock->tail, my_node);
+  while (atomic_load(&my_pred->locked)) {
+    // spin
+  }
+}
+
+void clh_release(CLHLock* lock) {
+  my_node->locked = false;
+  my_node = my_pred;
+}
+```
+
+<ClhRecyclingAnimation client:load/>
+
+Now we never need to allocate new nodes after a thread is initialized.
+
+### Implications of Fairness
+The cool thing about using these locks in an operating system is that we
+can bound the amount of time a thread will wait to acquire the lock! If all threads
+disable preemption before attempting to acquire the lock, then the queue size is
+bounded by the number of cores. If each thread only holds the lock for O(1) time, then
+the time to acquire the lock is also O(1)!

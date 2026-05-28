@@ -20,6 +20,13 @@ export default function SpinlockBadAnimation() {
 	return (
     <figure className="spinlock-figure">
       <div className="spinlock-demo">
+        <button className="reset-button" onClick={() => setStep(0)} aria-label="Reset animation" title="Reset">
+          <svg className="reset-icon" viewBox="0 0 20 20" aria-hidden="true">
+            <path d="M16 3v5h-5" />
+            <path d="M16 8a6 6 0 1 0 1.5 4" />
+          </svg>
+        </button>
+
         <div className="spinlock-row">
           <div className={lockTaken ? 'lock taken' : 'lock free'}>lock ({lockTaken ? 'taken' : 'free'})</div>
         </div>
@@ -49,6 +56,7 @@ export default function SpinlockBadAnimation() {
 
 			<style>{`
 				.spinlock-demo {
+          position: relative;
 					margin: 0;
           padding: 1rem;
           border: 1px solid #ddd;
@@ -132,6 +140,27 @@ export default function SpinlockBadAnimation() {
         .controls {
           display: flex;
           gap: 0.5rem;
+        }
+
+        .reset-button {
+          position: absolute;
+          top: 0.5rem;
+          left: 0.5rem;
+          width: 2rem;
+          height: 2rem;
+          display: grid;
+          place-items: center;
+          padding: 0;
+        }
+
+        .reset-icon {
+          width: 1rem;
+          height: 1rem;
+          fill: none;
+          stroke: currentColor;
+          stroke-width: 2;
+          stroke-linecap: round;
+          stroke-linejoin: round;
         }
 
         .slide-counter {
