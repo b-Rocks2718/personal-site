@@ -90,6 +90,21 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
         border-radius: 8px;
         text-align: left;
       }
+      .blog-post :global(.side-by-side) {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1rem;
+        margin: 1rem 0;
+      }
+      .blog-post :global(.side-by-side figure) {
+        margin: 0;
+      }
+      .blog-post :global(.side-by-side img) {
+        width: 100%;
+        height: auto;
+        display: block;
+        border-radius: 8px;
+      }
       .blog-post :global(li) {
         font-size: 0.9em;
       }
@@ -132,6 +147,9 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
         }
         .blog-post :global(p) {
           font-size: 0.95em;
+        }
+        .blog-post :global(.side-by-side) {
+          grid-template-columns: 1fr;
         }
       }
 		</style>
