@@ -96,10 +96,35 @@ img {
 	height: auto;
 	border-radius: 8px;
 }
+video {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+.video-figure {
+  max-width: 420px;
+  margin: 1rem auto;
+}
+
+.video-figure video {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.video-figure figcaption {
+  text-align: center;
+  font-size: 0.8em;
+  color: rgb(var(--gray));
+  line-height: 1.4;
+  margin-top: 0.35rem;
+}
 code {
-	padding: 2px 5px;
+	padding: 0px 3px;
 	background-color: rgb(var(--gray-light));
 	border-radius: 2px;
+  font-size: 0.9em;
+  white-space: nowrap;
 }
 pre {
 	padding: 1rem;

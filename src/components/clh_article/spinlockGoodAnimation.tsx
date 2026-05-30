@@ -21,10 +21,7 @@ export default function SpinlockGoodAnimation() {
     <figure className="spinlock-figure">
       <div className="spinlock-demo">
         <button className="reset-button" onClick={() => setStep(0)} aria-label="Reset animation" title="Reset">
-          <svg className="reset-icon" viewBox="0 0 20 20" aria-hidden="true">
-            <path d="M16 3v5h-5" />
-            <path d="M16 8a6 6 0 1 0 1.5 4" />
-          </svg>
+          <img className="reset-icon" src="/icons/reset.svg" alt="" aria-hidden="true" />
         </button>
 
         <div className="spinlock-row">
@@ -154,8 +151,10 @@ export default function SpinlockGoodAnimation() {
         }
 
         .reset-icon {
+          display: block;
           width: 1rem;
           height: 1rem;
+          border-radius: 0;
           fill: none;
           stroke: currentColor;
           stroke-width: 2;

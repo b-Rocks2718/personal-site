@@ -74,6 +74,25 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
       .blog-post :global(p) {
         font-size: 0.9em;
       }
+      .blog-post :global(figcaption) {
+        font-size: 0.8em;
+        color: rgb(var(--gray));
+        line-height: 1.4;
+        text-align: left;
+        margin-top: 0.35rem;
+      }
+      .blog-post :global(video) {
+        display: block;
+        width: 100%;
+        max-width: 420px;
+        height: auto;
+        margin: 1rem auto;
+        border-radius: 8px;
+        text-align: left;
+      }
+
+
+
       @media (max-width: 720px) {
 	      main {
           width: 100%;
