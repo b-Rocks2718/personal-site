@@ -90,8 +90,21 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
         border-radius: 8px;
         text-align: left;
       }
-
-
+      .blog-post :global(li) {
+        font-size: 0.9em;
+      }
+      .blog-post :global(.katex) {
+        font-size: 0.9em;
+      }
+      .blog-post :global(ul),
+      .blog-post :global(ol) {
+        line-height: 1.5;
+      }
+      .blog-post :global(.footnotes) {
+        margin-top: 2rem;
+        padding-top: 1rem;
+        border-top: 1px solid rgb(var(--gray-light));
+      }
 
       @media (max-width: 720px) {
 	      main {

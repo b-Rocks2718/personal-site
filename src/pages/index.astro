@@ -14,6 +14,7 @@ const recentPosts = [
 	...csPosts.map((post) => ({ ...post, section: 'cs' as const})),
 	...chemPosts.map((post) => ({ ...post, section: 'chem' as const})),
 ]
+	.filter((post) => !post.data.draft)
 	.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
 	.slice(0, 5);
 

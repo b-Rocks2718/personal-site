@@ -6,8 +6,10 @@ import { defineConfig, fontProviders } from 'astro/config';
 
 import react from '@astrojs/react';
 
+import remarkGfm from 'remark-gfm';
 import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex';
+import 'katex/contrib/mhchem';
 
 // https://astro.build/config
 export default defineConfig({
@@ -24,7 +26,7 @@ export default defineConfig({
     site: 'https://example.com',
     integrations: [
   	mdx({
-			  remarkPlugins: [remarkMath],
+			  remarkPlugins: [remarkGfm, remarkMath],
 			  rehypePlugins: [rehypeKatex],
 		  }),
 		  sitemap(),

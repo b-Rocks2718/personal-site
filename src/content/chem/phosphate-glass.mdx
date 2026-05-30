@@ -3,6 +3,7 @@ title: 'Phosphate Glass'
 description: >
   Making phosphate glasses doped with various rare earth elements
 pubDate: 'Jun 01 2026'
+draft: true
 ---
 
 ![Rare earth phosphate glass sample](/images/phosphate-glass/banner.jpg)
@@ -11,17 +12,50 @@ After watching [this video](https://www.youtube.com/watch?v=jEOhfFwfdYA&t=199s)
 from Apoptosis about his attempts at making Alums from rare earth elements, I was 
 inspired to do some rare earth chemistry myself. I was particularly interested in
 how the rare earth salts would change color depending on the kind of light they
-were in, and wanted to see if I could make glass with this property. After some reading,
-I found out that phosphate glasses have a high solubility for rare earth ions, 
-and didn't seem too difficult to make, so I decided to try it.
+were in, and wanted to see if I could make glass with this property. 
+I read that phosphate glasses have a high solubility for rare earth ions
+and aren't too difficult to make, so I decided to try it.
+
+### What is Phosphate Glass?
+Most glass is made from silicon oxide, where a bunch of silicon atoms are connected 
+together by oxygen atoms (image). It turns out you can replace silicon with
+many other elements and still get something similar to normal glass. As an example,
+strongly heating borax will cause it to decompose into boron oxide, which can 
+form borate glass when it cools (image). Phosphate glass is made by replacing 
+silicon with phosphorus, meaning I'd need to melt down some phosphorus oxide.
+
+##### Glass colors
+If all normal glass is made of silicon oxide, how do we have so many different colors of glass? 
+There are multiple ways to make colored glass, but a common one is to add a small amount of a 
+transition metal oxide to the silicon oxide, where the metal you choose determines the color. 
+For example, iron oxide gives a green color, and copper oxide make blue glass. 
+For this project, I'd still be using metal oxides as dopants, but instead of transition metals, 
+I'd use rare earth metals.
+
+##### Other additives
+Normal silicate glass often includes more than just the silicon and the coloring metal.
+It's common to add some sodium oxide to lower the melting point, 
+and calcium oxide to keep the glass from being water soluble. 
+Aluminum oxide can be added to make the glass stronger. 
+Many of these additives have a similar effect in phosphate glass, so I will using them as well.
+The exact composition I went with was a modified version of the one described in 
+[this paper](https://addi.ehu.es/bitstream/handle/10810/55938/1-s2.0-S0925838821044509-main.pdf;jsessionid=9BE82C910733A325BE94BEC53068BD47?sequence=1),
+the main difference being that I replaced barium oxide with the less toxic calcium oxide.
+It consists of[^true-composition]:
+- 57% Phosphorus pentoxide
+- 15% Rare earth oxide
+- 10% Potassium oxide
+- 8% Sodium oxide
+- 5% Calcium oxide
+- 5% Aluminum oxide
 
 ### Preparing the Rare Earth Salts
 I decided to make glass doped with praseodymium, holmium, neodymium, europium, terbium,
 gadolinium, and dysprosium. The first step was to convert the rare earth metals I had into 
-salts that would dissolve in the glass melt. Oxides are what we really want for the glass,
-but carbonates will also work since they decompose into oxides high temperature.
+salts that would dissolve in the glass melt. Oxides are what I really needed for the glass,
+but carbonates would also work since they decompose into oxides at high temperature.
 I figured the easiest way to do things would be to dissolve the metals in acid,
-and then precipitate out insolube carbonates by adding sodium carbonate.
+and then precipitate out insoluble carbonates by adding sodium carbonate.
 
 <figure>
   <img src="/images/phosphate-glass/metals.jpeg" alt="Rare earths metals" />
@@ -57,9 +91,28 @@ Europium likes to be in the +2 oxidation state,
 but I wanted the +3 state for the glass, so I added some hydrogen peroxide
 after everything had reacted with the water. 
 
-(video here)
+<figure class="video-figure">
+  <video controls muted playsinline preload="metadata">
+    <source src="/videos/phosphate-glass/oxidation.mp4" type="video/mp4" />
+    Your browser does not support the video tag.
+  </video>
+  <figcaption>Europium oxidizing to the +3 state.</figcaption>
+</figure>
 
 After drying, this was ready
 to be used for the glass, and I could go back to working on the other salts.
 
 After evaporating down the sulfate solutions, 
+
+
+
+[^true-composition]: What I really did was a mixture of compounds that
+    decompose into the above oxides at high temperature, as this is much easier
+    than preparing all the oxides beforehand. The composition I put in the furnace
+    was (by weight):
+    - 60% $\ce{NH4H2PO4}$
+    - 14% $\ce{K2CO3}$
+    - 11% $\ce{Na2CO3}$
+    - 7% $\ce{Ca(OH)2}$
+    - 5% $\ce{RE2(CO3)3}$
+    - 3% $\ce{Al2O3}$
