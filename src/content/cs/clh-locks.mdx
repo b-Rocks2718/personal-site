@@ -10,8 +10,10 @@ import SpinlockBadAnimation from '../../components/clh_article/spinlockBadAnimat
 import ClhQueueAnimation from '../../components/clh_article/clhQueueAnimation';
 import ClhRecyclingAnimation from '../../components/clh_article/clhRecyclingAnimation';
 
-CLH locks are the flavor of fair spinlocks I implemented for my operating system. 
-Before explaining them, let's look at a simple spinlock implementation and see why it's unfair.
+CLH locks are the flavor of fair spinlocks I implemented for my operating system, and 
+they simultaniously solve two issues with naive spinlocks: fairness, and cache locality.
+Before explaining them, let's look at a simple spinlock implementation and see why
+these problems arise.
 
 ## Naive Spinlock
 
@@ -45,7 +47,7 @@ void release() {
 }
 ```
 
-The issue with this implementation is that there is no guarantee about the order 
+The first issue with this implementation is that there is no guarantee about the order 
 that different threads will acquire the lock.
 If multiple threads are spinning on the lock, 
 we might hope that all get a chance to acquire the lock:
@@ -60,7 +62,16 @@ and it's possible that one thread will acquire the lock multiple times in a row:
 
 In general, we cannot make any guarantee on how long it will take for a 
 thread to acquire this kind of spinlock, and it could even starve indefinitely. 
-The solution is a new kind of spinlock.
+
+The second issue with this kind of lock is cache bouncing.
+The `atomic_swap` instruction writes to `taken`, so its cache line must be loaded
+into the spinning core's cache and evicted from all other cores' caches.
+If two cores both have threads that are spinning on the lock, the cache line
+containing `taken` will constantly be evicted from one core's cache and moved
+to the other. This wastes memory bandwidth, and means the lock takes longer to
+acquire than it should.
+
+The solution to both of these problems is a new kind of spinlock.
  
 ## CLH Locks
 
@@ -113,6 +124,8 @@ void clh_release(CLHLock* lock) {
 Whatever thread is next in the queue will observe this and acquire the lock.
 
 <ClhQueueAnimation client:load/>
+
+Because each thread spins on its own node, there is no cache bouncing.
 
 #### Node Recycling
 An issue with the above implementation is that we cannot reuse `my_node` 

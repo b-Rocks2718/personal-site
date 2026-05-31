@@ -6,8 +6,8 @@ pubDate: 'Jun 01 2026'
 draft: false
 ---
 
-After watching [this video](https://www.youtube.com/watch?v=jEOhfFwfdYA&t=199s)
-from Apoptosis about his attempts at making Alums from rare earth elements, I was 
+After watching a video from the youtube channel [Apoptosis](https://www.youtube.com/@integral_chemistry) 
+about his attempts at making alums from rare earth elements,[^apoptosis] I was 
 inspired to do some rare earth chemistry myself. I was particularly interested in
 how the rare earth salts would change color depending on the kind of light they
 were in, and wanted to see if I could make glass with this property. 
@@ -23,14 +23,14 @@ and aren't too difficult to make, so I decided to try it.
 Most glass is made from silicon oxide, where a bunch of silicon atoms are connected 
 together by oxygen atoms.
 
-<figure>
+<figure class="media-medium">
   <img src="/images/phosphate-glass/SiO2.svg" alt="Two-dimensional diagram of amorphous silica network" />
   <figcaption>Amorphous silica network. Image: Wikimedia Commons, public domain.</figcaption>
 </figure>
 
 It turns out you can replace silicon with
 many other elements and still get something similar to normal glass. As an example,
-strongly heating borax will cause it to decompose into boron oxide, which can 
+strongly heating borax will cause it to decompose into boron oxide[^boron], which can 
 form borate glass when it cools.
 
 <div class="side-by-side">
@@ -51,7 +51,7 @@ silicon with phosphorus, meaning I'd need to melt down some phosphorus oxide.
 If all normal glass is made of silicon oxide, how do we have so many different colors of glass? 
 There are multiple ways to make colored glass, but a common one is to add a small amount of a 
 transition metal oxide to the silicon oxide, where the metal you choose determines the color. 
-For example, iron oxide gives a green color, and copper oxide make blue glass. 
+For example, iron oxide gives a green color, and copper oxide makes blue glass. 
 For this project, I'd still be using metal oxides as dopants, but instead of transition metals, 
 I'd use rare earth metals.
 
@@ -59,28 +59,28 @@ I'd use rare earth metals.
 Normal silicate glass often includes more than just the silicon and the coloring metal.
 It's common to add some sodium oxide to lower the melting point, 
 and calcium oxide to keep the glass from being water soluble. 
-Aluminum oxide can be added to make the glass stronger. 
-Many of these additives have a similar effect in phosphate glass, so I will using them as well.
-The exact composition I went with was a modified version of the one described in 
-[this paper](https://addi.ehu.es/bitstream/handle/10810/55938/1-s2.0-S0925838821044509-main.pdf;jsessionid=9BE82C910733A325BE94BEC53068BD47?sequence=1),
-the main difference being that I replaced barium oxide with the less toxic calcium oxide.
-It consists of[^true-composition]:
+Aluminum oxide can be added to make the glass stronger and more chemically durable.
+Many of these additives have a similar effect in phosphate glass, so I used them as well.
+The exact composition I went with was a modified version of the neodymium-doped
+alumino-phosphate laser glass described by Muñoz-Quiñonero et al.[^nd-phosphate-paper]
+The main difference is that I replaced barium oxide with the less toxic calcium oxide.
+It roughly consists of[^true-composition]:
 - 57% Phosphorus pentoxide
-- 15% Rare earth oxide
-- 10% Potassium oxide
-- 8% Sodium oxide
-- 5% Calcium oxide
-- 5% Aluminum oxide
+- 15% Potassium oxide
+- 10% Sodium oxide
+- 8% Calcium oxide
+- 6% Rare earth oxide
+- 4% Aluminum oxide
 
 ### Preparing the Rare Earth Salts
-I decided to make glass doped with praseodymium, holmium, neodymium, europium, terbium,
+I decided to make glass doped with praseodymium, holmium, neodymium, erbium, europium, terbium,
 gadolinium, and dysprosium. The first step was to convert the rare earth metals I had into 
 salts that would dissolve in the glass melt. Oxides are what I really needed for the glass,
 but carbonates would also work since they decompose into oxides at high temperature.
 I figured the easiest way to do things would be to dissolve the metals in acid,
 and then precipitate out insoluble carbonates by adding sodium carbonate.
 
-<figure>
+<figure class="media-wide">
   <img src="/images/phosphate-glass/metals.jpeg" alt="Rare earths metals" />
   <figcaption>Getting ready to dissolve the metals</figcaption>
 </figure>
@@ -88,13 +88,13 @@ and then precipitate out insoluble carbonates by adding sodium carbonate.
 Following Apoptosis, I
 dissolved all but the europium in sulfuric acid, making the corresponding sulfate salts.
 In hindsight, I probably should have used hydrochloric acid instead. 
-Lots of rare earth sulfates have retrograde solubility, 
+Several rare earth sulfates have retrograde solubility, 
 meaning they become less soluble as the temperature increases. 
-Unfortunately, the process of the metal dissolving releases heat, 
+Unfortunately, the process of the metal dissolving releases heat,
 so it took a very long time for the metals to dissolve. Since I had no plans
 of making alums like Apoptosis, there was no benefit to making sulfate salts over chlorides.
 
-<figure>
+<figure class="media-wide">
   <img src="/images/phosphate-glass/dissolution.jpeg" alt="Rare earths dissolving in sulfuric acid" />
   <figcaption>Praseodymium, Holmium, and Neodymium dissolving in sulfuric acid</figcaption>
 </figure>
@@ -102,7 +102,7 @@ of making alums like Apoptosis, there was no benefit to making sulfate salts ove
 Europium can be converted to its hydroxide by just adding water, so I 
 didn't bother using any acid on it.
 
-<figure class="video-figure">
+<figure class="video-figure media-medium">
   <video controls muted playsinline preload="metadata">
     <source src="/videos/phosphate-glass/europium.mp4" type="video/mp4" />
     Your browser does not support the video tag.
@@ -114,7 +114,7 @@ Europium likes to be in the +2 oxidation state,
 but I wanted the +3 state for the glass, so I added some hydrogen peroxide
 after everything had reacted with the water. 
 
-<figure class="video-figure">
+<figure class="video-figure media-medium">
   <video controls muted playsinline preload="metadata">
     <source src="/videos/phosphate-glass/oxidation.mp4" type="video/mp4" />
     Your browser does not support the video tag.
@@ -125,7 +125,7 @@ after everything had reacted with the water.
 After drying, this was ready
 to be used for the glass, and I could go back to working on the other salts.
 
-The Holmium solution immediately displayed the color changing effect I was looking for.
+The holmium solution immediately displayed the color changing effect I was looking for.
 
 <figure class="video-figure media-wide">
   <video controls muted playsinline preload="metadata">
@@ -144,7 +144,7 @@ salts into carbonates. I boiled them down for a while so I'd have less water to 
 and then added sodium carbonate to each solution. I only got video of this for holmium,
 but the process was identical for all the other rare earths.
 
-<figure class="video-figure">
+<figure class="video-figure media-medium">
   <video controls muted playsinline preload="metadata">
     <source src="/videos/phosphate-glass/holmium_s.mp4" type="video/mp4" />
     Your browser does not support the video tag.
@@ -155,7 +155,7 @@ but the process was identical for all the other rare earths.
 The precipitate formed instantly, and was filtered off and dried. My 
 rare earths were now in a form that could be used for the glass!
 
-<figure>
+<figure class="media-medium">
   <img src="/images/phosphate-glass/holmium_dry.jpg" alt="Holmium carbonate" />
   <figcaption>Holmium carbonate after drying</figcaption>
 </figure>
@@ -164,7 +164,7 @@ rare earths were now in a form that could be used for the glass!
 At this point we could simply mix the ingredients in the ratios described earlier, 
 and throw it in the furnace![^gas-evolution]
 
-<figure>
+<figure class="media-medium">
   <img src="/images/phosphate-glass/crucible.jpeg" alt="Crucible with glass mixture" />
   <figcaption>Crucible with glass mixture before heating</figcaption>
 </figure>
@@ -172,7 +172,7 @@ and throw it in the furnace![^gas-evolution]
 After heating to around 2000°F for an hour, everything had melted together
 and I could pour out the glass. 
 
-<figure class="video-figure">
+<figure class="video-figure media-medium">
   <video controls muted playsinline preload="metadata">
     <source src="/videos/phosphate-glass/melt.mp4" type="video/mp4" />
     Your browser does not support the video tag.
@@ -183,15 +183,15 @@ and I could pour out the glass.
 After many hours repeating this for each rare earth, 
 I had a nice collection of phosphate glasses.
 
-<figure>
+<figure class="media-wide">
   <img src="/images/phosphate-glass/glass.jpeg" alt="Crucible with glass mixture" />
   <figcaption>Green: Praseodymium, Purple: Neodymium, Yellow: Holmium,
     Pink: Erbium, Transparent: Dysprosium, Terbium, and Europium</figcaption>
 </figure>
 
-The Holium-doped glass changed color just like the solution. 
+The holmium-doped glass changed color just like the solution. 
 
-<figure class="video-figure">
+<figure class="video-figure media-medium">
   <video controls muted playsinline preload="metadata">
     <source src="/videos/phosphate-glass/attempt2.mp4" type="video/mp4" />
     Your browser does not support the video tag.
@@ -203,7 +203,7 @@ The other interesting results were the terbium and europium glasses. Both
 are colorless in normal light, but under UV light the terbium glass glows green and the europium glass glows red.
 Surprisingly, the undoped phosphate glass glows blue under UV.
 
-<figure class="video-figure">
+<figure class="video-figure media-medium">
   <video controls muted playsinline preload="metadata">
     <source src="/videos/phosphate-glass/glow.mp4" type="video/mp4" />
     Your browser does not support the video tag.
@@ -213,8 +213,8 @@ Surprisingly, the undoped phosphate glass glows blue under UV.
 
 ### What if we put it in a particle accelerator?
 The legends at [Electron Impressions](https://www.youtube.com/@ElectronImpressions)
-were kind enough to send some of the glass I made through an electron
-particle accelerator, and the results were pretty cool. 
+were kind enough to send some of the glass I made through an electron 
+accelerator, and the results were pretty cool. 
 
 The glasses glowed all different colors as they passed through the beam.
 
@@ -227,7 +227,7 @@ The glasses glowed all different colors as they passed through the beam.
 
 After, the glass was discolored, but returned to normal after a few days.
 
-<figure>
+<figure class="media-wide">
   <img src="/images/phosphate-glass/damage.jpg" alt="discolored glass" />
   <figcaption>Discolored glass after exposure to the electron beam.</figcaption>
 </figure>
@@ -243,9 +243,8 @@ glow green when heated.
 </figure>
 
 Surprisingly, the copper-doped borate glass seems to have become fluorescent, 
-and glows yellow under UV light now. Previously it didn't glow at all under UV.
-I'm not sure why this happened, my best guess is something related to 
-some of the copper (II) getting converted to copper (I).
+and glows yellow under UV light now. I'm not sure why this happened, my best guess is something related to 
+some of the copper(II) getting converted to copper(I).
 
 <div class="side-by-side">
   <figure>
@@ -261,33 +260,32 @@ some of the copper (II) getting converted to copper (I).
 ### Gold glass
 As mentioned earlier, metal oxides are not the only way to make colored glass.
 Another way is to use a metal directly, in the form of nanoparticles suspended 
-in the glass. For a long time, red glass was made using gold nanoparticles, and
-I wanted to try this out myself (I'd been looking for an excuse to make
-aqua regia anyway). 
+in the glass. For a long time, red glass was made using gold nanoparticles,
+and I wanted to try this out myself. 
 
-I had 100mg of gold metal I was willing to sacrifice for this experiment, 
+I had 100 mg of gold metal I was willing to sacrifice for this experiment, 
 and the first step would be working out how to convert it to 
 nanoparticles. No mechanical process, like grinding it up, would be able to 
 create small enough particles, so I'd have to do some chemistry. Similar to 
-[this sciencemadness post](https://www.sciencemadness.org/talk/viewthread.php?tid=77433),
-my plan was to dissolve the gold in acid, add the solution some powdered glass,
+a method I found in a ScienceMadness thread,[^sciencemadness-gold]
+my plan was to dissolve the gold in acid, add the solution to some powdered glass,
 and melt everything together. Hopefully as the gold solution decomposes in the heat,
-I'd end up with nanoparticled that color the glass red. 
+I'd end up with nanoparticles that color the glass red. 
 
 Gold is extremely resistant to most acids, and none I had were capable of dissolving it.
 Luckily, a mixture of two acids I had, hydrochloric acid and nitric acid, 
 could dissolve gold by working together. The basic reason for this is that to 
-dissolve gold, you need a strong oxidizing agent to rip away some of its electrons.
-Nitric acid is capable of this, but gold ions are not stable in nitric acid. Gold
-ions are stable in hydrochloric acid, but hydrochloric acid isn't strong enough to oxidize gold on its own. 
-When you mix the two together, the nitric acid oxidizes the gold, 
-and the hydrochloric acid stabilizes the resulting gold ions by forming chloroauric acid.
+dissolve gold, you need oxidizing chemistry to rip away some of its electrons,
+and enough chloride around to stabilize the oxidized gold as chloroauric acid.
+Nitric acid is oxidizing but lacks chloride, and hydrochloric acid has chloride but isn't oxidizing.
+When mixed, they form a solution known as "aqua regia", which is capable of
+dissolving gold.
 
 Both acids are clear, but mixing them causes the solution to turn
 orange, from the formation of nitrosyl chloride and chlorine gas. Both of these
 are very toxic, so don't try this if you don't know what you're doing.
 
-<figure class="video-figure">
+<figure class="video-figure media-medium">
   <video controls muted playsinline preload="metadata">
     <source src="/videos/phosphate-glass/regia.mp4" type="video/mp4" />
     Your browser does not support the video tag.
@@ -295,12 +293,13 @@ are very toxic, so don't try this if you don't know what you're doing.
   <figcaption>Hard to see, but there's a tiny piece of gold dissolving at the bottom of the test tube.</figcaption>
 </figure>
 
-At room tempurature, the gold dissolves very slowly, so I used an oil bath to speed
-up the process. After everything dissolved I kept heating to boil off most of the water.
+At room temperature, the gold dissolves very slowly, so I used an oil bath to heat the test
+tube and speed up the process. 
+After everything dissolved I kept heating to boil off most of the water.
 At the end I was left with a few milliliters of a bright yellow solution of 
 chloroauric acid.
 
-<figure>
+<figure class="media-medium">
   <img src="/images/phosphate-glass/aura.jpg" alt="gold solution" />
   <figcaption>The gold solution</figcaption>
 </figure>
@@ -308,7 +307,7 @@ chloroauric acid.
 After adding a few drops to some powdered glass and melting it, 
 I ended up with a nice red glass! 
 
-<figure class="video-figure">
+<figure class="video-figure media-medium">
   <video controls muted playsinline preload="metadata">
     <source src="/videos/phosphate-glass/torch.mp4" type="video/mp4" />
     Your browser does not support the video tag.
@@ -324,17 +323,25 @@ larger chunks and rose to the surface, making a cool effect.
 </div>
 
 ### Future work
-Phosphate glasses doped with other elements have many other cool propertied I'd 
-like to explore in the future. Glass doped with silver is transparent under normal light, but 
-darkens under UV, and has been used in sunglasses. Phosphate glass doped with
-silver, erbium, and ytterbium can apparently do upconversion, where
-it absorbs photons of infrared light and emits visible light. This has always seemed
+Phosphate glasses doped with other elements have many other cool properties I'd 
+like to explore in the future. Photochromic alumino-phosphate glass can use
+silver and halides to darken under UV light,[^photochromic-glass] and phosphate glass doped with
+silver nanoparticles, erbium, and ytterbium can apparently do upconversion, where
+it absorbs photons of infrared light and emits visible light[^upconversion]. This has always seemed
 cool to me because it doesn't seem like it should be possible to get higher energy light
-from lower energy light[^upconversion]. I'd also really like to make phosphorescent (glow in the dark) 
+from lower energy light[^upconversion2]. I'd also really like to make phosphorescent (glow in the dark) 
 glass by suspending strontium aluminate in the glass. I'll keep this page updated
 if I ever get to any of these!
 
-[^true-composition]: What I really did was a mixture of compounds that
+[^apoptosis]: Apoptosis, video on making rare-earth alums, YouTube, https://www.youtube.com/watch?v=jEOhfFwfdYA&t=199s.
+
+[^boron]: Sodium oxide is also produced in the decomposition, but boron oxide is what forms the glass 
+
+[^nd-phosphate-paper]:
+    Mónica Muñoz-Quiñonero et al., "Dehydroxylation processing and lasing properties of a Nd alumino-phosphate glass,"
+    *Journal of Alloys and Compounds* 896 (2022): 163040, https://doi.org/10.1016/j.jallcom.2021.163040.
+
+[^true-composition]: What I really used was a mixture of compounds that
     decompose into the above oxides at high temperature, as this is much easier
     than preparing all the oxides beforehand. The composition I put in the furnace
     was (by weight):
@@ -350,6 +357,17 @@ if I ever get to any of these!
     $\ce{NH4H2PO4}$, ammonia gas will be produced as soon as 
     the ingredients are mixed. 
 
+[^sciencemadness-gold]:
+    ScienceMadness forum thread, "Gold ruby glass," https://www.sciencemadness.org/talk/viewthread.php?tid=77433.
+
+[^photochromic-glass]:
+    Edric Ellis, Richard Gelder, and Allan Hale, "Photochromic alumino-phosphate glasses,"
+    U.S. Patent 4,088,501, issued May 9, 1978, https://patentimages.storage.googleapis.com/97/24/02/26d4efb9c160eb/US4088501.pdf.
+
 [^upconversion]:
+    Chengguo Ming et al., "Optical character of $\ce{Er^3+/Yb^3+}$ co-doped $\ce{P2O5-CaO-Na2O-Al2O3-AgO}$ phosphate glass,"
+    *Optics Communications* 284, no. 7 (2011): 1868-1871, https://doi.org/10.1016/j.optcom.2010.12.011.
+
+[^upconversion2]:
     Upconversion is possible because the material can absorb two photons
     of low energy infrared light, and then emit one photon of higher energy visible light.
