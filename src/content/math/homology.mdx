@@ -1,16 +1,49 @@
 ---
-title: 'Homology'
+title: 'Classifying topological spaces with linear algebra'
 description: >
-  Simplicial homology and topological data analysis.
+  Explaining simplicial homology and topological data analysis.
   
 
 pubDate: 'Jun 05 2026'
 draft: true
 ---
 
-## simplicial homology
+import SimplicialComplexDemo from '../../components/homology_article/SimplicialComplexDemo';
+import VietorisRipsFormationDemo from '../../components/homology_article/VietorisRipsFormationDemo';
+
+In this article I'll be giving a brief introduction to homology,
+a tool from algebraic topology used for classifying topological spaces.
+I was inspired to write this because it seems like there are a lot of great
+resources explaining the fundamental group[^homotopy-sources], but compartively few resources 
+explaining homology in an accessible way. This surprises me because
+homology gives you similar information to homotopy groups, but
+is often much easier to work with. If you have a good understanding of linear algebra,
+then you have everything you need to start computing homology groups!
+
+## Simplicial Complexes
+
+There are multiple kinds of homology, but I'll just be covering the simplest one: simplicial homology. 
+Simplicial homology gets its name from because it works by dividing a 
+topological space into simplices, which are the higher-dimensional 
+analogues of triangles and tetrahedra 
+(a triangle is a 2-simplex, a tetrahedron is a 3-simplex).
+
+## Simplicial Homology
 
 $$
 H_k(X) = \frac{\ker \partial_k}{\operatorname{im} \partial_{k+1}}
 $$
 
+
+## Persistent Homology
+
+
+<VietorisRipsFormationDemo client:load />
+
+<SimplicialComplexDemo client:load />
+
+
+[^homotopy-sources]:
+    Some ones I liked are:
+    - [A Sphere is a Loop of Loops](https://www.youtube.com/watch?v=CxGtAuJdjYI&t=3003s) from Dennis Sweeney
+    - [What is a hole?](https://www.youtube.com/watch?v=IDcw33YRgpY) from Aleph 0
